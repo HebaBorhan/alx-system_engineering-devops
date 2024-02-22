@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# This script is displaying the content of the current directory
+
+for file in *; do
+    new_name=$(echo "$file" | cut -d '-' -f 2-)
+    echo "$new_name"
+done
