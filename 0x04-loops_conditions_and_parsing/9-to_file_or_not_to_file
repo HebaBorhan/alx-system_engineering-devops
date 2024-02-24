@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 # This script is displaying if a file exists
 
-if [ -e "school" ]; then
+file="school"
+if [ -e "$file" ]; then
     echo "school file exists"
-        if [ -s "$school" ]; then
+        if [ -s "$file" ]; then
             echo "school file is not empty"
         else
             echo "school file is empty"
