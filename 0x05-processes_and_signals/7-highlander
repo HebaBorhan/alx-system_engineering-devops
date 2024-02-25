@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # This script displays To infinity and beyond indefinitely and exit with SIGTERM.
 
-trap 'echo "I am invincible!!!"; exit' SIGTERM SIGINT
-
 while true; do
+    trap 'echo "I am invincible!!!"; exit' SIGTERM
+
     echo "To infinity and beyond"
     sleep 2
 done
