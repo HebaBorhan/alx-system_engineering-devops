@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# This script is displaying To infinity and beyond indefinitely.
+# This script is displaying To infinity and beyond indefinitely and exit with SIGTERM.
 
-trap 'echo "I am invincible!!!"; exit' SIGTERM
+trap 'echo "I am invincible!!!"; exit' SIGTERM SIGINT
 
 while true; do
     echo "To infinity and beyond"
