@@ -4,5 +4,5 @@
 ip_addresses=$(ifconfig | grep 'inet ' | awk '{print $2}')
 
 for ip in $ip_addresses; do
-    echo $ip
+    echo "$ip"
 done
