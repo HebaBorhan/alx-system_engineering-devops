@@ -4,4 +4,4 @@
 cp /etc/hosts ~/cpy_hosts
 sed -i s/127.0.0.1/127.0.0.2/ ~/cpy_hosts
 sed -i s/157.240.11.35/8.8.8.8/ ~/cpy_hosts
-cp -f ./cpy_hosts /etc/hosts
+cp -f ~/cpy_hosts /etc/hosts
