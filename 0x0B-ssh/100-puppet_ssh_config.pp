@@ -1,14 +1,13 @@
 # This script shows the SSH client configuration
 
-file { '/home/heba/.ssh/config':
-  ensure => present,
-  content => "\
-Host 23.23.73.165
-    IdentityFile ~/.ssh/school
-    PreferredAuthentications publickey
-    PasswordAuthentication no
-",
-  owner => 'heba',
-  group => 'heba',
-  mode => '0600',
+# Configure SSH client to use the private key ~/.ssh/school
+file_line { 'Declare identity file':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'IdentityFile ~/.ssh/school',
+}
+
+# Configure SSH client to refuse password authentication
+file_line { 'Turn off passwd auth':
+  path  => '/etc/ssh/ssh_config',
+  line  => 'PasswordAuthentication no',
 }
