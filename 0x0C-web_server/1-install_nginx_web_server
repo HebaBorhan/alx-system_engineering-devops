@@ -8,6 +8,6 @@ apt install -y nginx
 service nginx start
 
 sed -i 's/# server_name_in_redirect off;/server_name_in_redirect off;/g' /etc/nginx/nginx.conf
-sed -i 's/# root \/var\/www\/html;/root \/usr\/share\/nginx\/html;\n\n\tlocation \/ {\n\t\treturn 200 "Hello World!";\n\t}\n/g' /etc/nginx/sites-available/default
+sed -i 's@root /usr/share/nginx/html;@root /usr/share/nginx/html;\n\n\tlocation / {\n\t\treturn 200 "Hello World!";\n\t}\n@g' /etc/nginx/sites-available/default
 
 service nginx restart
