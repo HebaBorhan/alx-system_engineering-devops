@@ -7,6 +7,6 @@ apt install -y nginx
 
 service nginx start
 
-echo "<html><head><title>Hello World!</title></head><body><h1>Hello World!</h1></body></html>" | sudo tee /usr/share/nginx/html/index.html
+echo "Hello World!" | sudo tee /usr/share/nginx/html/index.html
 
 service nginx restart
