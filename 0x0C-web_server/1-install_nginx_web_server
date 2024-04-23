@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # This script configures a new Ubuntu machine to Install nginx on my server
 
-apt update
+sudo apt update
 
-apt install -y nginx
+sudo apt install -y nginx
 
 echo 'Hello World!' > /var/www/html/index.nginx-debian.html
 
-service nginx start
+sudo service nginx start
