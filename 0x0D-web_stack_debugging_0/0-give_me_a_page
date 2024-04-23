@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# fixing error
+
+Apache is off
+service apache2 start
