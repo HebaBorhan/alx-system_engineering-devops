@@ -23,7 +23,7 @@ NGINX_CONFIG="server {
     add_header X-Served-By $SERVER_HOSTNAME;
 }"
 
-echo "$NGINX_CONFIG" | sudo tee /etc/nginx/sites-available/
+echo "$NGINX_CONFIG" | sudo tee /etc/nginx/sites-available/custom_header
 
 sudo ln -s /etc/nginx/sites-available/custom_header /etc/nginx/sites-enabled/
 
