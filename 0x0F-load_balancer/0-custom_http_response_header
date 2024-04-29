@@ -7,21 +7,22 @@ sudo apt-get -y update
 sudo apt-get -y install nginx
 
 # shellcheck disable=SC2154
-SERVER_HOSTNAME=$(hostname -s)
+server_hostname=$(hostname -s)
 
-NGINX_CONFIG="server {
+nginx_config="server {
     listen 80 default_server;
     listen [::]:80 default_server;
 
     server_name _;
 
+    add_header X-Served-By $server_hostname;
+
     location / {
         root /var/www/html;
-        index index.html index.htm;
-        add_header X-Served-By $SERVER_HOSTNAME;
+        index index.html index.htm index.nginx-debian.html;
     }
 }"
 
-echo "$NGINX_CONFIG" | sudo tee /etc/nginx/sites-available/default
+echo "$nginx_config" | sudo tee /etc/nginx/sites-available/default
 
 sudo service nginx restart
