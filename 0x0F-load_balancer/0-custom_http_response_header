@@ -23,6 +23,6 @@ nginx_config="server {
     }
 }"
 
-echo "$nginx_config" | sudo tee /etc/nginx/sites-available/default
+echo "$nginx_config" | sudo tee /etc/nginx/sites-enabled/default
 
 sudo service nginx restart
