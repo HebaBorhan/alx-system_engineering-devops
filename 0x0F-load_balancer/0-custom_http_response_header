@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script configures a new Ubuntu machine to Install nginx on my server
+# This script configures a new Ubuntu machine to Install nginx on server
 # then configure it so that its HTTP response contains a custom header 
 
 sudo apt-get -y update
