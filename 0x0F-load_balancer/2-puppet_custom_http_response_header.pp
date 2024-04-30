@@ -5,29 +5,35 @@ package { 'nginx':
   ensure => installed,
 }
 
-# HTTP custom header
-$server_hostname = $::hostname
+# Define a custom fact to retrieve the hostname
+Facter.add('server_hostname') do
+  setcode 'hostname -s'
+end
 
-# Configure Nginx with custom header
+# Configure Nginx site
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
-  content => "server {
-    listen 80 default_server;
-    listen [::]:80 default_server;
+  content => "
+    server {
+      listen 80 default_server;
+      listen [::]:80 default_server;
 
-    server_name _;
+      server_name _;
 
-    location / {
+      add_header X-Served-By ${server_hostname};
+
+      location / {
         root /var/www/html;
         index index.html index.htm index.nginx-debian.html;
-        add_header X-Served-By $server_hostname;
+      }
     }
-}",
-  notify  => Service['nginx'],
+  ",
+  require => Package['nginx'],
 }
 
 # Restart Nginx service
 service { 'nginx':
   ensure => running,
   enable => true,
+  subscribe => File['/etc/nginx/sites-available/default'],
 }
