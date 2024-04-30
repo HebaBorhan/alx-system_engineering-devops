@@ -30,6 +30,4 @@ backend webservers
     server 530954-web-02 54.144.141.225:80 check
 EOF
 
-sudo systemctl restart haproxy
-
-sudo systemctl enable haproxy
+sudo service haproxy restart
