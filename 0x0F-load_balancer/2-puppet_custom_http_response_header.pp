@@ -1,4 +1,4 @@
-# This script configures a new Ubuntu machine to Install nginx on server
+# This script configures new Ubuntu machine to Install nginx on server
 # then configure it so that its HTTP response contains a custom header
 
 package { 'nginx':
