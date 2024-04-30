@@ -32,3 +32,12 @@ service { 'nginx':
   enable => true,
   subscribe => File['/etc/nginx/sites-available/default'],
 }
+
+# Check if custom header is present in Nginx response
+exec { 'check_nginx_custom_header':
+  command     => '/usr/bin/curl -Is http://localhost | grep -q "X-Served-By"',
+  path        => ['/bin', '/usr/bin'],
+  logoutput   => true,
+  refreshonly => true,
+  subscribe   => Service['nginx'],
+}
