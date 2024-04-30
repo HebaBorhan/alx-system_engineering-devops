@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This script Install and configure HAproxy on lb-01 server.
+# This script Installs and configures HAproxy on lb-01 server.
 
 sudo apt update
 sudo apt install -y haproxy
