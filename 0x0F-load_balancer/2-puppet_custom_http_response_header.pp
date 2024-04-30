@@ -15,7 +15,7 @@ file { '/etc/nginx/sites-available/default':
 
       server_name _;
 
-      add_header X-Served-By \"$(hostname -s)\";
+      add_header X-Served-By ${facts['hostname']};
 
       location / {
         root /var/www/html;
