@@ -26,31 +26,6 @@ file { '/etc/nginx/sites-available/default':
   notify  => Service['nginx'],
 }
 
-# Create symlink
-file { '/etc/nginx/sites-enabled/default':
-  ensure => link,
-  target => '/etc/nginx/sites-available/default',
-  notify => Service['nginx'],
-}
-
-file { '/etc/nginx/sites-available/default':
-  ensure  => present,
-  content => '
-    server {
-      listen 80;
-      server_name _;
-
-      location / {
-        return 200 "Hello World!";
-      }
-
-      location /redirect_me {
-        return 301 https://www.example.com/;
-      }
-    }
-  ',
-}
-
 # Restart Nginx service
 service { 'nginx':
   ensure => running,
