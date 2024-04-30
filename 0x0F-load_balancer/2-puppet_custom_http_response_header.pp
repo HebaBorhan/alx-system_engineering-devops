@@ -5,11 +5,6 @@ package { 'nginx':
   ensure => installed,
 }
 
-# Define a custom fact to retrieve the hostname
-Facter.add('server_hostname') do
-  setcode 'hostname -s'
-end
-
 # Configure Nginx site
 file { '/etc/nginx/sites-available/default':
   ensure  => present,
@@ -20,7 +15,7 @@ file { '/etc/nginx/sites-available/default':
 
       server_name _;
 
-      add_header X-Served-By ${server_hostname};
+      add_header X-Served-By \"$(hostname -s)\";
 
       location / {
         root /var/www/html;
