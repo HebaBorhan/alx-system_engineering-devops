@@ -4,9 +4,6 @@
 sudo apt update
 sudo apt install -y haproxy
 
-# shellcheck disable=SC2154
-server_hostname=$(hostname -s)
-
 sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<EOF
 global
     log /dev/log    local0
@@ -29,8 +26,8 @@ frontend http-in
 
 backend webservers
     balance roundrobin
-    server web-01 $server_hostname:80 check
-    server web-02 $server_hostname:80 check
+    server 530954-web-01 23.23.73.165:80 check
+    server 530954-web-02 54.144.141.225:80 check
 EOF
 
 sudo systemctl restart haproxy
