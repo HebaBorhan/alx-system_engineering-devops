@@ -4,6 +4,8 @@
 # Run Check
 if ! sudo service nginx status > /dev/null 2>&1; then
     sudo service nginx start
+else
+    sudo service nginx restart
 fi
 
 # configuation file
