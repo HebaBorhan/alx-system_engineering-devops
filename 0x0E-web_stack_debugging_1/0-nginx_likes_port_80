@@ -15,10 +15,3 @@ if ! grep -q "listen\s*80;" /etc/nginx/nginx.conf; then
     sudo sed -i '/server {/a \    listen 80;' /etc/nginx/nginx.conf
     sudo service nginx restart
 fi
-
-# port 80
-if ! netstat -tuln | grep -q ":80 "; then
-    echo "Nginx is not listening on port 80."
-else
-    echo "Nginx is now listening on port 80."
-fi
