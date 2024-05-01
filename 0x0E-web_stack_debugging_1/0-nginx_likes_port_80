@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# This script Checks if Nginx is listening on port 80
+
+
+# Installing Nginx
+sudo apt-get update
+sudo apt-get install -y nginx
+
+# Run Check
+if ! sudo service nginx status > /dev/null 2>&1; then
+    sudo service nginx start
+fi
+
+# configuation file
+if ! grep -q "listen\s*80;" /etc/nginx/nginx.conf; then
+    sudo sed -i '/server {/a \    listen 80;' /etc/nginx/nginx.conf
+    sudo service nginx restart
+fi
+
+# port 80
+if ! netstat -tuln | grep -q ":80 "; then
+    echo "Nginx is not listening on port 80."
+else
+    echo "Nginx is now listening on port 80."
+fi
