@@ -1,34 +1,18 @@
 #!/usr/bin/env bash
 # This Script displays information about subdomains.
 
-# Query DNS records
-query_dns() {
-    sub_domain="$1"
-    record_type="$2"
-    dig +short "$sub_domain" "$record_type"
+# Query DNS records & print subdomain info
+print_subdomain_info() {
+    dig +short "$1" A | awk -v subdomain="$2" 'NR==1 { print "The subdomain " subdomain " is a A record and points to " $1 }'
 }
 
-# Subdomain information
-display_info() {
-    sub_domain="$1"
-    record_type="$2"
-    destination=$(query_dns "$sub_domain" "$record_type")
-    echo "The subdomain $sub_domain is a $record_type record and points to $destination"
-}
-
-# Entry Point
-main() {
-    domain="$1"
-    subdomains=("www" "lb-01" "web-01" "web-02")
-
-    if [ -z "$2" ]; then
-        for subdomain in "${subdomains[@]}"; do
-            display_info "$subdomain.$domain" A
-        done
-    else
-        display_info "$2.$domain" A
-    fi
-}
-
-# Call main function
-main "$@"
+# Check subdomain
+# shellcheck disable=SC2086
+if [ "$#" -eq 2 ]; then
+    print_subdomain_info "$2.$1" "$2"
+else
+    print_subdomain_info "www.$1" "www"
+    print_subdomain_info "lb-01.$1" "lb-01"
+    print_subdomain_info "web-01.$1" "web-01"
+    print_subdomain_info "web-02.$1" "web-02"
+fi
