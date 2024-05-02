@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This script Checks if Nginx is listening on port 80
 rm /etc/nginx/sites-enabled/default
-ln -snf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 service nginx restart
