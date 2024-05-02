@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 # This script Checks if Nginx is listening on port 80
 
-rm /etc/nginx/sites-enabled/default
-ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+# if Nginx conf. exists, remove it
+if [ -f /etc/nginx/sites-enabled/default ]; then
+    rm /etc/nginx/sites-enabled/default
+fi
+
+# Source & destination paths for symbolic link
+source="/etc/nginx/sites-available/default"
+destination="/etc/nginx/sites-enabled/default"
+
+# Create symbolic link
+ln -sf "$source" "$destination"
+
+# Apply changes
 service nginx restart
