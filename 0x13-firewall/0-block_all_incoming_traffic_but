@@ -1,0 +1,17 @@
+sudo apt-get update
+
+# if ufw is not installed
+sudo apt-get install -y ufw
+
+# Setting Up Default Policies
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Allowing SSH Connections
+sudo ufw allow 22
+sudo ufw allow 80
+sudo ufw allow 443
+
+# Enabling UFW
+sudo ufw show added
+sudo ufw enable
