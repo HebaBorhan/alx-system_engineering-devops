@@ -2,7 +2,7 @@
 # This Script makes Nginx runs as the nginx user.
 
 # Change permissions of nginx.conf
-chmod 644 /etc/nginx/nginx.conf
+chmod u=rw,go=r /etc/nginx/nginx.conf
 
 # Change user in nginx.conf
 sed -i 's/\s*#*\s*user .*/user nginx;/' /etc/nginx/nginx.conf
