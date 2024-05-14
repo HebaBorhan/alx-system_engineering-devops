@@ -5,10 +5,10 @@
 chmod 644 /etc/nginx/nginx.conf
 
 # Change user in nginx.conf
-sed -i 's/user\s*nginx;/user nginx;/g' /etc/nginx/nginx.conf
+sed -i 's/\s*#*\s*user .*/user nginx;/' /etc/nginx/nginx.conf
 
 # Replace port 80 with port 8080
-sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
+sed -i 's/\(listen [::]*:*\)80/\18080/' /etc/nginx/sites-enabled/default
 
 # kill any Apache service running
 pkill apache2
