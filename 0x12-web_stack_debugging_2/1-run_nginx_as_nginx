@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# This Script makes Nginx running as the nginx user.
+
+# Change permissions of nginx.conf
+chmod u=rw,go=r /etc/nginx/nginx.conf
+
+# Change user in nginx.conf
+sed -i 's/user\s*nginx;/user nginx;/g' /etc/nginx/nginx.conf
+
+# Replace port 80 with port 8080
+sed -i 's/listen\s*80;/listen 8080;/g' /etc/nginx/sites-available/default
+
+# Restart Nginx service
+sudo -u nginx service nginx restart
