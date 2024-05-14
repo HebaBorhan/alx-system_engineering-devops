@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This Script runs the whoami command under the user passed as an argument
+# This Script runs the whoami command under the user passed as argument
 
 # Check if an argument is provided
 if [ $# -ne 1 ]; then
