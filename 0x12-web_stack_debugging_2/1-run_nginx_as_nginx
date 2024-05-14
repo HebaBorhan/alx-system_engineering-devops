@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This Script makes Nginx running as the nginx user.
+# This Script makes Nginx runs as the nginx user.
 
 # Change permissions of nginx.conf
 chmod u=rw,go=r /etc/nginx/nginx.conf
