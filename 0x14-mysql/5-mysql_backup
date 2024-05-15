@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+# This Script generates a MySQL dump and creates a compressed archive out of it
+
+# Check password argument
+if [ $# -ne 1 ]; then
+    exit 1
+fi
+
+# MySQL root password
+mysql_pass="$1"
+
+# Current date
+current_date=$(date +'%d-%m-%Y')
+
+# MySQL dump file
+mysql_dump="backup.sql"
+
+# Compressed archive
+archive_name="$current_date.tar.gz"
+
+# MySQL dump command
+mysqldump -u root -p"$mysql_pass" --all-databases > "$mysql_dump"
+
+# Create tar.gz archive
+tar -czf "$archive_name" "$mysql_dump"
