@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This Script generates a MySQL dump and creates a compressed archive out of it
+# This Script generates a MySQL dump & creates a compressed archive out of it
 
 # Check password argument
 if [ $# -ne 1 ]; then
