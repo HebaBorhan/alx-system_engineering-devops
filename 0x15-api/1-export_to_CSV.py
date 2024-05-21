@@ -12,7 +12,7 @@ if __name__ == "__main__":
         EMPLOYEE_ID = int(sys.argv[1])
 
         # Fetch employee details
-        employee_response = requests.get(f"{url}/users/{employee_id}")
+        employee_response = requests.get(f"{url}/users/{EMPLOYEE_ID}")
         EMPLOYEE_DATA = employee_response.json()
 
         # Extract employee name
