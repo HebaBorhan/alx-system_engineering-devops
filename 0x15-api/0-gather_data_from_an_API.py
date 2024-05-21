@@ -14,12 +14,12 @@ if __name__ == "__main__":
     Tasks_4_emply = requests.get(
         URL + "todos/", params={"userId": sys.argv[1]}).json()
     COMPLETED_TASKS = []
-    for task in Tasks_4_emply:
-        if task.get("completed"):
-            COMPLETED_TASKS.append(task.get("title"))
+    for TASK_TITLE in Tasks_4_emply:
+        if TASK_TITLE.get("completed"):
+            COMPLETED_TASKS.append(TASK_TITLE.get("title"))
     len_T_C = (len(COMPLETED_TASKS))
     len_e_t_c = (len(Tasks_4_emply))
     print("Employee {} is done with tasks({}/{}):".format(
         EMPLOYEE_NAME, len_T_C, len_e_t_c))
     for task in COMPLETED_TASKS:
-        print("\t {}".format(task))
+        print("\t {}".format(TASK_TITLE))
