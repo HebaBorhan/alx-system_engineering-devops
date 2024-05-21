@@ -15,7 +15,7 @@ if __name__ == "__main__":
         "{}/users/{}".format(url, USER_ID)).json()
 
     # Extract employee name
-    USERNAME = EMPLOYEE_DATA.get('name')
+    USERNAME = EMPLOYEE_DATA.get('username')
 
     # Fetch user's TODO list
     response = requests.get(
