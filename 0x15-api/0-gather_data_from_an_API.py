@@ -7,23 +7,19 @@ import sys
 
 
 if __name__ == "__main__":
-    url = "https://jsonplaceholder.typicode.com/"
+    URL = "https://jsonplaceholder.typicode.com/"
+    EMPLOYEE_DATA = requests.get(URL + "users/{}".format(sys.argv[1])).json()
+    EMPLOYEE_NAME = EMPLOYEE_DATA.get("name")
 
-    if len(sys.argv) > 1:
-        if re.fullmatch(r'\d+', sys.argv[1]):
-            id = int(sys.argv[1])
-            req = requests.get('{}/users/{}'.format(url, id)).json()
-            task_req = requests.get('{}/todos'.format(url)).json()
-            emp_name = req.get('name')
-            tasks = list(filter(lambda x: x.get('userId') == id, task_req))
-            completed_tasks = list(filter(lambda x: x.get('completed'), tasks))
-            print(
-                'Employee {} is done with tasks({}/{}):'.format(
-                    emp_name,
-                    len(completed_tasks),
-                    len(tasks)
-                )
-            )
-            if len(completed_tasks) > 0:
-                for task in completed_tasks:
-                    print('\t {}'.format(task.get('title')))
+    Tasks_4_emply = requests.get(
+        URL + "todos/", params={"userId": sys.argv[1]}).json()
+    COMPLETED_TASKS = []
+    for task in Tasks_4_emply:
+        if task.get("completed"):
+            COMPLETED_TASKS.append(task.get("title"))
+    len_T_C = (len(COMPLETED_TASKS))
+    len_e_t_c = (len(Tasks_4_emply))
+    print("Employee {} is done with tasks({}/{}):".format(
+        EMPLOYEE_NAME, len_T_C, len_e_t_c))
+    for task in COMPLETED_TASKS:
+        print("\t {}".format(task))
