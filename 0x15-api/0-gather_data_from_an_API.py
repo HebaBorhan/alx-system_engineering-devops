@@ -24,17 +24,20 @@ if __name__ == "__main__":
                 todo_req = json.loads(response.read().decode())
 
             # Extract employee name
-            employee_name = request.get('name')
+            EMPLOYEE_NAME = request.get('name')
 
             # Filter tasks by employee ID
-            tasks = list(filter(
+            TOTAL_NUMBER_OF_TASKS = list(filter(
                 lambda x: x.get('userId') == employee_id, todo_req))
 
-            # Filter completed tasks
-            completed_tasks = list(filter(lambda x: x.get('completed'), tasks))
+            # Filter done tasks
+            NUMBER_OF_DONE_TASKS = list(
+                filter(lambda x: x.get('completed'), TOTAL_NUMBER_OF_TASKS))
 
             # Print the result
-            print("Employee {} is done with tasks({}/{}):".format(
-                employee_name, len(completed_tasks), len(tasks)))
-            for task in completed_tasks:
+            print(
+                "Employee {} is done with tasks({}/{}):".format(
+                    EMPLOYEE_NAME, len(
+                        NUMBER_OF_DONE_TASKS), len(TOTAL_NUMBER_OF_TASKS)))
+            for task in NUMBER_OF_DONE_TASKS:
                 print('\t {}'.format(task.get('title')))
