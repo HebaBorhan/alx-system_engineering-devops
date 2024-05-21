@@ -15,13 +15,9 @@ if __name__ == "__main__":
             employee_id = int(sys.argv[1])
 
             # Fetch employee details
-            try:
-                with urllib.request.urlopen(
-                        f"{url}/users/{employee_id}") as response:
-                    request = json.loads(response.read().decode())
-            except urllib.error.HTTPError as e:
-                print(f"Error: Employee with ID {employee_id} not found.")
-                sys.exit(1)
+            with urllib.request.urlopen(
+                    f"{url}/users/{employee_id}") as response:
+                request = json.loads(response.read().decode())
 
             # Fetch employee's todos
             with urllib.request.urlopen(f"{url}/todos") as response:
@@ -41,8 +37,4 @@ if __name__ == "__main__":
             print("Employee {} is done with tasks({}/{}):".format(
                 employee_name, len(completed_tasks), len(tasks)))
             for task in completed_tasks:
-                print(f"\t {task.get('title')}")
-        else:
-            print("Error: Employee ID must be an integer.")
-    else:
-        print("Usage: python script.py <employee_id>")
+                print('\t {}'.format(task.get('title')))
