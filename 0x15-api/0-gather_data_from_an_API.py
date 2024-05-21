@@ -4,7 +4,7 @@ returns information about his/her TODO list progress"""
 import json
 import re
 import sys
-import urllib.request
+import urllib
 
 
 url = "https://jsonplaceholder.typicode.com"
