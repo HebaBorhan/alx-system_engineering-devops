@@ -16,27 +16,30 @@ if __name__ == "__main__":
 
             # Fetch employee details
             try:
-                with urllib.request.urlopen(f"{url}/users/{employee_id}") as response:
-                    req = json.loads(response.read().decode())
+                with urllib.request.urlopen(
+                        f"{url}/users/{employee_id}") as response:
+                    request = json.loads(response.read().decode())
             except urllib.error.HTTPError as e:
                 print(f"Error: Employee with ID {employee_id} not found.")
                 sys.exit(1)
 
             # Fetch employee's todos
             with urllib.request.urlopen(f"{url}/todos") as response:
-                task_req = json.loads(response.read().decode())
+                todo_req = json.loads(response.read().decode())
 
             # Extract employee name
-            emp_name = req.get('name')
+            employee_name = request.get('name')
 
             # Filter tasks by employee ID
-            tasks = list(filter(lambda x: x.get('userId') == employee_id, task_req))
+            tasks = list(filter(
+                lambda x: x.get('userId') == employee_id, todo_req))
 
             # Filter completed tasks
             completed_tasks = list(filter(lambda x: x.get('completed'), tasks))
 
             # Print the result
-            print(f"Employee {emp_name} is done with tasks({len(completed_tasks)}/{len(tasks)}):")
+            print("Employee {} is done with tasks({}/{}):".format(
+                employee_name, len(completed_tasks), len(tasks)))
             for task in completed_tasks:
                 print(f"\t {task.get('title')}")
         else:
