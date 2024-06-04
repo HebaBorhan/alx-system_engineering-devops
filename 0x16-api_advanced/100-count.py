@@ -51,4 +51,4 @@ def count_words(subreddit, word_list, after=None, word_count=None):
         else:
             return None
     except requests.RequestException:
-        return
+        return None
