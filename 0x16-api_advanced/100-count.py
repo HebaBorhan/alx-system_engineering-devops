@@ -49,6 +49,6 @@ def count_words(subreddit, word_list, after=None, word_count=None):
                         print('{}: {}'.format(word[0], word[1]))
                 return
         else:
-            return
+            return None
     except requests.RequestException:
         return
