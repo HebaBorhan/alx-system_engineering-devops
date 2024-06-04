@@ -53,4 +53,4 @@ def count_words(subreddit, word_list, after=None, word_count=None):
     except requests.RequestException:
         return
 
-    count_words("python", ["Python", "javascript", "java", "C++", "Go"])
+count_words("python", ["Python", "javascript", "java", "C++", "Go"])
