@@ -19,6 +19,6 @@ file { $file_path:
 
 # Correct the typo in the wp-settings.php file
 exec { 'fix_php_typo':
-  command => 'sed -i s/phpp/php/g $file_path',
+  command => "sed -i s/phpp/php/g $file_path",
   require => File[$file_path],
 }
