@@ -10,7 +10,7 @@ exec { 'install_puppet_lint':
   require => Package['ruby'],
 }
 
-exec { 'fix-wordpress':
+exec { 'fix-typo_php':
   command => 'sed -i s/phpp/php/g /var/www/html/wp-settings.php',
   path    => '/usr/local/bin/:/bin/'
 }
