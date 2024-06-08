@@ -47,9 +47,10 @@ service apache2 start
 
 ### Corrective and Preventative Measures
 #### Improvements/Fixes:
-Enhance container initialization scripts to ensure all necessary services start automatically.
-Implement more robust monitoring and alerting for service status within Docker containers.
-Conduct a review of all container images to verify that essential services are configured to start on initialization.
+* Enhance container initialization scripts to ensure all necessary services start automatically.
+* Implement more robust monitoring and alerting for service status within Docker containers.
+* Conduct a review of all container images to verify that essential services are configured to start on initialization.
+
 
 #### Tasks to Address the Issue:
 1. Patch Docker Image:
@@ -61,17 +62,20 @@ RUN apt-get update && apt-get install -y apache2
 CMD ["apachectl", "-D", "FOREGROUND"]
 ```
 
+
 2. Add Monitoring:
 
 Implement monitoring for Apache service within Docker containers to alert if the service is not running.
 
 Example: Use Nagios or a similar tool to check the status of Apache periodically.
 
+
 3. Test and Validate:
 
 Conduct thorough testing of the updated Docker image to ensure Apache starts correctly on initialization.
 
 Simulate outages to validate monitoring and alerting mechanisms are working as expected.
+
 
 4. Documentation Update:
 
