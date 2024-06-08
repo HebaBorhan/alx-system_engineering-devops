@@ -62,15 +62,22 @@ CMD ["apachectl", "-D", "FOREGROUND"]
 ```
 
 2. Add Monitoring:
+
 Implement monitoring for Apache service within Docker containers to alert if the service is not running.
+
 Example: Use Nagios or a similar tool to check the status of Apache periodically.
 
 3. Test and Validate:
+
 Conduct thorough testing of the updated Docker image to ensure Apache starts correctly on initialization.
+
 Simulate outages to validate monitoring and alerting mechanisms are working as expected.
 
 4. Documentation Update:
+
 Update the internal documentation to include the steps required to start Apache within the container.
+
 Document the process for adding necessary startup commands in Docker images.
+
 
 By implementing these measures, we aim to prevent future outages and ensure the reliability of our web services hosted in Docker containers.
