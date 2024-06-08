@@ -39,11 +39,12 @@ To resolve the issue, the Apache service was manually started within the Docker 
 A script was added to ensure Apache starts automatically when the container is initialized. 
 
 The following command was included in the Docker container configuration:
-bash
+```bash
 Copy code
 #!/usr/bin/env bash
 # Start Apache service
 service apache2 start
+```
 
 ### Corrective and Preventative Measures
 #### Improvements/Fixes:
@@ -52,23 +53,24 @@ Implement more robust monitoring and alerting for service status within Docker c
 Conduct a review of all container images to verify that essential services are configured to start on initialization.
 
 #### Tasks to Address the Issue:
-Patch Docker Image:
+1. Patch Docker Image:
 Modify the Dockerfile to include the command to start Apache automatically.
-dockerfile
+```dockerfile
 Copy code
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -y apache2
 CMD ["apachectl", "-D", "FOREGROUND"]
+```
 
-Add Monitoring:
+2. Add Monitoring:
 Implement monitoring for Apache service within Docker containers to alert if the service is not running.
 Example: Use Nagios or a similar tool to check the status of Apache periodically.
 
-Test and Validate:
+3. Test and Validate:
 Conduct thorough testing of the updated Docker image to ensure Apache starts correctly on initialization.
 Simulate outages to validate monitoring and alerting mechanisms are working as expected.
 
-Documentation Update:
+4. Documentation Update:
 Update the internal documentation to include the steps required to start Apache within the container.
 Document the process for adding necessary startup commands in Docker images.
 
