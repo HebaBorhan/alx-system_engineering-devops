@@ -40,7 +40,6 @@ A script was added to ensure Apache starts automatically when the container is i
 
 The following command was included in the Docker container configuration:
 ```bash
-Copy code
 #!/usr/bin/env bash
 # Start Apache service
 service apache2 start
@@ -54,9 +53,9 @@ Conduct a review of all container images to verify that essential services are c
 
 #### Tasks to Address the Issue:
 1. Patch Docker Image:
+
 Modify the Dockerfile to include the command to start Apache automatically.
 ```dockerfile
-Copy code
 FROM ubuntu:latest
 RUN apt-get update && apt-get install -y apache2
 CMD ["apachectl", "-D", "FOREGROUND"]
