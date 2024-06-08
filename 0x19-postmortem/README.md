@@ -4,34 +4,35 @@
 
 ### Issue Summary
 #### Duration of Outage:
-⋅⋅* Start: 2024-04-22 14:00 UTC
-⋅⋅* End: 2024-04-22 14:45 UTC
+* Start: 2024-04-22 14:00 UTC
+* End: 2024-04-22 14:45 UTC
 
 #### Impact:
-The Apache service on our Docker container was down.
-Users experienced an inability to access the web service, receiving an "Empty reply from server" error when querying the root of the service.
-Approximately 100% of users attempting to access the service were affected during the outage.
+* The Apache service on our Docker container was down.
+* Users experienced an inability to access the web service, receiving an "Empty reply from server" error when querying the root of the service.
+* Approximately 100% of users attempting to access the service were affected during the outage.
 
 #### Root Cause:
 Apache was not started in the Docker container upon initialization.
 
 
 ### Timeline
-14:00 UTC: Issue detected via user complaint indicating "Empty reply from server" error.
-14:05 UTC: Monitoring alerts confirmed the web service was down.
-14:10 UTC: Initial investigation began. The Docker container was checked to ensure it was running.
-14:15 UTC: Docker container status confirmed as running; however, the service was not responding.
-14:20 UTC: Assumed network misconfiguration within the Docker container.
-14:25 UTC: Network settings and firewall rules within the container were verified as correct.
-14:30 UTC: Escalated to the infrastructure team for deeper inspection.
-14:35 UTC: Infrastructure team discovered Apache service was not started.
-14:40 UTC: Apache service was manually started within the Docker container.
-14:45 UTC: Issue resolved. Apache service was up and running, confirmed by successful curl request returning "Hello Holberton".
+* 14:00 UTC: Issue detected via user complaint indicating "Empty reply from server" error.
+* 14:05 UTC: Monitoring alerts confirmed the web service was down.
+* 14:10 UTC: Initial investigation began. The Docker container was checked to ensure it was running.
+* 14:15 UTC: Docker container status confirmed as running; however, the service was not responding.
+* 14:20 UTC: Assumed network misconfiguration within the Docker container.
+* 14:25 UTC: Network settings and firewall rules within the container were verified as correct.
+* 14:30 UTC: Escalated to the infrastructure team for deeper inspection.
+* 14:35 UTC: Infrastructure team discovered Apache service was not started.
+* 14:40 UTC: Apache service was manually started within the Docker container.
+* 14:45 UTC: Issue resolved. Apache service was up and running, confirmed by successful curl request returning "Hello Holberton".
 
 
 ### Root Cause and Resolution
 #### Root Cause:
-The root cause of the outage was due to the Apache web server not being started automatically when the Docker container was initialized. This was likely due to the container image not including the necessary startup command for Apache.
+The root cause of the outage was due to the Apache web server not being started automatically when the Docker container was initialized.
+This was likely due to the container image not including the necessary startup command for Apache.
 
 #### Resolution:
 To resolve the issue, the Apache service was manually started within the Docker container using the command service apache2 start.
