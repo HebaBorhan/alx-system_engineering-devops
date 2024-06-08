@@ -4,8 +4,8 @@
 
 ### Issue Summary
 #### Duration of Outage:
-Start: 2024-04-22 14:00 UTC
-End: 2024-04-22 14:45 UTC
+⋅⋅* Start: 2024-04-22 14:00 UTC
+⋅⋅* End: 2024-04-22 14:45 UTC
 
 #### Impact:
 The Apache service on our Docker container was down.
@@ -70,4 +70,5 @@ Simulate outages to validate monitoring and alerting mechanisms are working as e
 Documentation Update:
 Update the internal documentation to include the steps required to start Apache within the container.
 Document the process for adding necessary startup commands in Docker images.
+
 By implementing these measures, we aim to prevent future outages and ensure the reliability of our web services hosted in Docker containers.
